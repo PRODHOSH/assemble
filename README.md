@@ -164,7 +164,7 @@ Everyone who has helped build Assemble — code, design, docs, ideas, all of it.
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ---
-## Star History
+## Star History  
 
 <a href="https://www.star-history.com/?repos=PRODHOSH%2Fassemble&type=date&legend=top-left">
  <picture>
@@ -178,3 +178,4 @@ Everyone who has helped build Assemble — code, design, docs, ideas, all of it.
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
+
