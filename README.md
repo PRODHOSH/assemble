@@ -1,5 +1,4 @@
 <div align="center">
-
 # Assemble
 
 **Turn ideas into execution-ready teams, automatically.**
