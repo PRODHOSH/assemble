@@ -1,180 +1,147 @@
+<div align="center">
+
 # Assemble
 
-> **Good ideas are everywhere. Good teammates are not.**
+**Turn ideas into execution-ready teams, automatically.**
 
-Assemble is an open source platform that helps people turn ideas into real projects.
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![Code of Conduct](https://img.shields.io/badge/Code%20of%20Conduct-active-purple.svg)](CODE_OF_CONDUCT.md)
 
-Whether you're building an AI startup, a hackathon project, an open source tool, or a hardware prototype, Assemble helps you find the right teammates, review applications, build your team, and start collaborating in minutes.
+Assemble is an open-source collaboration platform where builders pitch projects, recruit teammates through structured applications, and instantly receive a ready-to-use collaborative workspace once the team is complete.
 
-No more posting "Looking for a frontend developer" across five Discord servers.
+[How it works](#how-it-works) · [Tech Stack](#tech-stack) · [Local Setup](#local-setup) · [Contributing](#want-to-contribute)
 
-No more waiting for someone to reply to your LinkedIn post.
-
-Just pitch your project and start building.
+</div>
 
 ---
 
-## Why Assemble?
+## What is Assemble?
 
-Every day, thousands of great ideas never leave a notebook because the right team never comes together.
+Great ideas fail every day because the right people never find each other.
 
-One person has the idea.
+Assemble bridges the gap between idea pitch and code execution. Instead of spending days searching through scattered Discord servers, LinkedIn feeds, Reddit subreddits, or WhatsApp groups for teammates, project creators can recruit qualified contributors from a single, dedicated platform.
 
-Another person has backend experience.
+Once a project gets approved by a platform admin, builders apply with their profiles (GitHub, portfolio, resume, and answers to custom questions). Once every required role is filled, Assemble automatically creates a ready-to-use collaborative environment for the team—creating repositories, setting up channels, and inviting members.
 
-Someone else is a great designer.
+---
 
-They never meet.
+## Why does it exist?
 
-Assemble fixes that.
+Finding teammates for hackathons, open-source tools, startup ideas, or side projects is unnecessarily painful:
+
+* **Low visibility:** A message in a "team-formation" channel on Discord gets buried in minutes.
+* **No structure:** Creators receive unstructured direct messages with little detail about an applicant's skills or commitment.
+* **Manual onboarding friction:** Once a team is agreed upon, someone has to manually set up a GitHub repo, initialize a Discord server, set up role permissions, create channels, and send invitations. This delay kills initial momentum.
+
+Assemble solves this by screening candidates through customizable applications and automating the setup of the team's working environment the moment they are ready to build.
 
 ---
 
 ## How it works
 
-### 1. Pitch your idea
+```mermaid
+graph TD
+    A[Create Builder Profile] --> B[Pitch Project & Define Roles]
+    B --> C{Admin Review}
+    C -->|Approved| D[Public Project Discovery]
+    C -->|Needs Revision| B
+    D --> E[Contributors Apply]
+    E --> F[Admin Screens Applications]
+    F -->|Shortlisted| G[Schedule Discussion via Cal.com]
+    G --> H[Accept Teammates]
+    H -->|All Roles Filled| I[Automated Workspace Provisioning]
+    I --> J[GitHub Org Repo & Discord Server Ready]
+```
 
-Create a project page with:
-
-* Project description
-* Tech stack
-* Team requirements
-* Timeline
-* Expected commitment
-* Custom application questions
-
-Every submission is reviewed before it becomes public.
-
----
-
-### 2. Receive applications
-
-Contributors apply with their:
-
-* GitHub
-* Portfolio
-* Resume
-* Experience
-* Answers to your custom questions
-
-Review every application from one dashboard.
-
----
-
-### 3. Build your team
-
-Accept contributors until every role is filled.
-
-Once your team is complete, Assemble automatically creates your collaboration workspace.
-
-No manual setup required.
-
----
-
-### 4. Start building
-
-Your team instantly receives:
-
-* GitHub Organization
-* Discord Server
-* Project workspace
-* Member invitations
-
-From idea to execution in just a few clicks.
-
----
-
-## What makes Assemble different?
-
-Instead of trying to replace GitHub, Discord, Notion, Jira, or Linear...
-
-Assemble connects them.
-
-It focuses on the hardest part:
-
-**Finding the right people to build with.**
-
----
-
-## Planned Features
-
-* Structured project pitching
-* Public project discovery
-* Contributor profiles
-* Team applications
-* Custom application forms
-* Project admin dashboard
-* Admin moderation
-* GitHub organization automation
-* Discord server automation
-* Cal.com meeting integration
-* Public project pages
-* Project status tracking
+1. **Pitch a Project:** Detail your project description (in Markdown), category, required roles, difficulty, commitment level, and custom application questions.
+2. **Review Applications:** Review portfolios, resumes, and answers in a unified dashboard. Candidates are ranked based on a matching score.
+3. **Conduct Discussions:** Shortlist candidates and schedule quick alignment calls directly using the integrated Cal.com scheduler.
+4. **Instant Provisioning:** Once the team is complete, the platform automatically provisions:
+   - A dedicated **GitHub Repository** under your GitHub Organization.
+   - An invite-only **Discord Server** populated with core channels (`#announcements`, `#general`, `#frontend`, `#backend`, `#design`, `#docs`, `#meetings`, `#resources`).
 
 ---
 
 ## Tech Stack
 
-Coming soon.
+| Layer | Technologies |
+|---|---|
+| **Frontend** | Next.js (App Router) · Tailwind CSS · shadcn/ui · Lucide Icons · TypeScript |
+| **Backend** | Next.js API Routes (Route Handlers) |
+| **Database & Auth** | Supabase (PostgreSQL) · PostgreSQL RLS (Row Level Security) |
+| **Integrations & APIs** | GitHub API (Repo creation & invites) · Discord API (Guilds & channels setup) · Cal.com API (Interview scheduling) |
+| **Media / Storage** | Cloudinary (Pitch images & profile avatars) |
+| **Email** | Resend (Workspace invitations & alerts) |
+| **Analytics** | PostHog |
+| **Hosting** | Vercel |
 
 ---
 
-## Project Status
+## Running it locally
 
-🚧 Assemble is currently under active development.
+### What you need before starting:
+- Node.js 20+
+- A free [Supabase](https://supabase.com) account
+- Git
 
-The first release focuses on creating the best experience for finding teammates and launching projects.
+### Steps:
 
----
+```bash
+# 1. Clone the repository
+git clone https://github.com/PRODHOSH/assemble.git
+cd assemble
 
-## Contributing
+# 2. Install dependencies
+npm install
 
-We'd love your help.
+# 3. Create your local environment file
+cp .env.example .env.local
+```
 
-Whether you're a developer, designer, writer, or someone with product ideas, every contribution matters.
+### Database Setup:
+1. Create a free project at [supabase.com](https://supabase.com).
+2. Navigate to your project → **SQL Editor** → **New Query**.
+3. Copy the contents of the database schema (found in `supabase/schema.sql`) and paste them into the query editor, then click **Run**.
+4. Copy your project's URL and anon key from **Project Settings → API** and paste them into your `.env.local` file.
 
-1. Fork the repository.
-2. Create a new branch.
-3. Make your changes.
-4. Open a Pull Request.
+### Startup:
+```bash
+npm run dev
+```
+Open `http://localhost:3000` to start building.
 
-If you're unsure where to start, check the open issues.
-
----
-
-## Roadmap
-
-* [ ] Authentication
-* [ ] User profiles
-* [ ] Project pitching
-* [ ] Admin review system
-* [ ] Project discovery
-* [ ] Applications
-* [ ] Project dashboard
-* [ ] GitHub automation
-* [ ] Discord automation
-* [ ] Cal.com integration
-* [ ] Public project pages
-* [ ] First public release
+For a detailed walkthrough on setting up OAuth, Webhooks, and GitHub/Discord API credentials, check out [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ---
 
-## The dream
+## Project Structure
 
-Imagine opening Assemble and seeing hundreds of ambitious projects waiting for teammates.
+```text
+assemble/
+├── src/
+│   ├── app/              # Next.js App Router (Pages, layout, & Route Handlers)
+│   ├── components/       # Custom React components (organized by features)
+│   │   ├── ui/           # Base shadcn/ui components (buttons, dialogs, inputs)
+│   ├── lib/              # Integration clients & utility functions (GitHub, Discord, Supabase)
+│   └── types/            # TypeScript interface & type definitions
+├── public/               # Static assets & public images
+└── supabase/             # Database migrations & schemas
+```
 
-Someone needs an AI engineer.
+---
 
-Someone is looking for a designer.
+## Want to contribute?
 
-Someone wants to build the next open source library.
+Assemble is built by open-source contributors. We welcome pull requests of all sizes, from documentation fixes to core workflow automations.
 
-Someone is waiting for you.
-
-Maybe your next project starts here.
+Before you start:
+1. Review the [CONTRIBUTING.md](CONTRIBUTING.md) guide for branch naming, commit standards, and the local setup guide.
+2. Read the [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) to understand how we collaborate.
+3. Check our [GitHub Issues](https://github.com/PRODHOSH/assemble/issues) to find tasks labeled `good first issue`. Remember to comment on the issue and wait to be assigned before writing code!
 
 ---
 
 ## License
 
-MIT License
+This project is licensed under the [MIT License](LICENSE).
