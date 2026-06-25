@@ -13,7 +13,7 @@
 
 Assemble is an open-source collaboration platform where builders pitch projects, recruit teammates through structured applications, and instantly receive a ready-to-use collaborative workspace once the team is complete.
 
-[How it works](#how-it-works) · [Tech Stack](#tech-stack) · [Local Setup](#local-setup) · [Contributing](#want-to-contribute)
+[How it works](#how-it-works) · [Tech Stack](#tech-stack) · [Running it locally](#running-it-locally) · [Contributing](#want-to-contribute)
 
 </div>
 
@@ -145,13 +145,8 @@ Before you start:
 
 ---
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
 ## Contributors ✨
-
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+Everyone who has helped build Assemble — code, design, docs, ideas, all of it.
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -169,4 +164,6 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+## License
+
+This project is licensed under the [MIT License](LICENSE).

@@ -1,0 +1,3 @@
+-- Database Schema for Assemble
+-- This file will contain the PostgreSQL table definitions, relationships, and Row Level Security (RLS) policies.
+-- Add your schema definitions here.
