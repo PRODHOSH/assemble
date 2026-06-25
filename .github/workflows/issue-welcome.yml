@@ -1,0 +1,42 @@
+name: Issue Welcome
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  welcome:
+    name: Welcome new issue
+    runs-on: ubuntu-latest
+    if: github.event.issue.user.type != 'Bot'
+    permissions:
+      issues: write
+
+    steps:
+      - name: Post welcome comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const issue = context.payload.issue;
+            const author = issue.user.login;
+
+            const body = [
+              `Hi @${author}, thank you for opening this issue.`,
+              ``,
+              `Before starting any work on this, please reply to this issue explaining your approach to solving it.`,
+              ``,
+              `Please keep these principles in mind:`,
+              `1. Explain the changes in your own words. Do not paste AI-generated summaries or explanations.`,
+              `2. Wait until you are explicitly assigned by a maintainer before you begin writing code. This helps prevent multiple people from working on the same issue.`,
+              `3. Review the CONTRIBUTING.md file for instructions on environment setup and branch naming.`,
+              ``,
+              `Once a maintainer has reviewed your approach and assigned you to the issue, you can start working on it. We appreciate your contribution to Assemble.`,
+            ].join('\n');
+
+            await github.rest.issues.createComment({
+              owner,
+              repo,
+              issue_number: issue.number,
+              body,
+            });

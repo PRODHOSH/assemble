@@ -1,0 +1,63 @@
+- name: "ELUSOC"
+  color: "7B2FBE"
+  description: "EluSoC project submission or task"
+
+- name: "NEWBIE"
+  color: "2da44e"
+  description: "Good for newcomers to open source"
+
+- name: "ADVENTURER"
+  color: "fb8f44"
+  description: "Some prior experience required"
+
+- name: "VETERAN"
+  color: "d93f0b"
+  description: "Requires deep understanding of the codebase"
+
+- name: "frontend"
+  color: "0075ca"
+  description: "Related to UI, Next.js components, or styling"
+
+- name: "backend"
+  color: "e4e669"
+  description: "Related to Supabase APIs or database migrations"
+
+- name: "docs"
+  color: "0075ca"
+  description: "Documentation updates or improvements"
+
+- name: "bug"
+  color: "d73a4a"
+  description: "Something isn't working"
+
+- name: "fix-merge"
+  color: "5319e7"
+  description: "Ready to be merged or a bugfix patch"
+
+- name: "in-progress"
+  color: "fef2c0"
+  description: "Work is currently in progress"
+
+- name: "completed"
+  color: "0e8a16"
+  description: "This issue or pull request is completed"
+
+- name: "wontfix"
+  color: "ffffff"
+  description: "This will not be worked on"
+
+- name: "enhancement"
+  color: "a2eeef"
+  description: "New feature or enhancement request"
+
+- name: "help wanted"
+  color: "008672"
+  description: "Extra attention needed; open for anyone"
+
+- name: "duplicate"
+  color: "cfd3d7"
+  description: "This issue or PR already exists"
+
+- name: "invalid"
+  color: "e4e669"
+  description: "This does not seem correct or is out of scope"

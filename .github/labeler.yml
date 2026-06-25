@@ -1,0 +1,27 @@
+frontend:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'src/app/**'
+          - '!src/app/api/**'
+          - 'src/components/**'
+          - '**/*.css'
+          - 'tailwind.config.*'
+          - 'postcss.config.*'
+          - 'next.config.*'
+          - 'public/**'
+
+backend:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'src/lib/**'
+          - 'src/app/api/**'
+          - 'supabase/**'
+          - 'src/types/**'
+
+docs:
+  - changed-files:
+      - any-glob-to-any-file:
+          - '**/*.md'
+          - '.github/PULL_REQUEST_TEMPLATE.md'
+          - 'CONTRIBUTING.md'
+          - 'CODE_OF_CONDUCT.md'

@@ -1,0 +1,42 @@
+name: PR Merged Thanks
+
+on:
+  pull_request_target:
+    types: [closed]
+    branches: [main, develop]
+
+jobs:
+  thanks:
+    name: Thank contributor
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true && github.event.pull_request.user.type != 'Bot'
+    permissions:
+      issues: write
+      pull-requests: write
+
+    steps:
+      - name: Post thank you comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const pr = context.payload.pull_request;
+            const author = pr.user.login;
+
+            const body = [
+              `Your pull request has been merged, @${author}. Thank you for contributing to Assemble.`,
+              ``,
+              `Your changes are now part of the project. Here is what you can do next:`,
+              `1. If you have not done so already, please star the repository to support the project.`,
+              `2. Share your contribution on social media to let others know you shipped code to an open source project.`,
+              `3. Check the open issues list to find more tasks to work on.`,
+              ``,
+              `We appreciate you taking the time to help build Assemble. See you in the next pull request.`,
+            ].join('\n');
+
+            await github.rest.issues.createComment({
+              owner,
+              repo,
+              issue_number: pr.number,
+              body,
+            });
