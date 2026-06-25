@@ -1,36 +1,180 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Assemble
 
-## Getting Started
+> **Good ideas are everywhere. Good teammates are not.**
 
-First, run the development server:
+Assemble is an open source platform that helps people turn ideas into real projects.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Whether you're building an AI startup, a hackathon project, an open source tool, or a hardware prototype, Assemble helps you find the right teammates, review applications, build your team, and start collaborating in minutes.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+No more posting "Looking for a frontend developer" across five Discord servers.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+No more waiting for someone to reply to your LinkedIn post.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Just pitch your project and start building.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Why Assemble?
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Every day, thousands of great ideas never leave a notebook because the right team never comes together.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+One person has the idea.
 
-## Deploy on Vercel
+Another person has backend experience.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Someone else is a great designer.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+They never meet.
+
+Assemble fixes that.
+
+---
+
+## How it works
+
+### 1. Pitch your idea
+
+Create a project page with:
+
+* Project description
+* Tech stack
+* Team requirements
+* Timeline
+* Expected commitment
+* Custom application questions
+
+Every submission is reviewed before it becomes public.
+
+---
+
+### 2. Receive applications
+
+Contributors apply with their:
+
+* GitHub
+* Portfolio
+* Resume
+* Experience
+* Answers to your custom questions
+
+Review every application from one dashboard.
+
+---
+
+### 3. Build your team
+
+Accept contributors until every role is filled.
+
+Once your team is complete, Assemble automatically creates your collaboration workspace.
+
+No manual setup required.
+
+---
+
+### 4. Start building
+
+Your team instantly receives:
+
+* GitHub Organization
+* Discord Server
+* Project workspace
+* Member invitations
+
+From idea to execution in just a few clicks.
+
+---
+
+## What makes Assemble different?
+
+Instead of trying to replace GitHub, Discord, Notion, Jira, or Linear...
+
+Assemble connects them.
+
+It focuses on the hardest part:
+
+**Finding the right people to build with.**
+
+---
+
+## Planned Features
+
+* Structured project pitching
+* Public project discovery
+* Contributor profiles
+* Team applications
+* Custom application forms
+* Project admin dashboard
+* Admin moderation
+* GitHub organization automation
+* Discord server automation
+* Cal.com meeting integration
+* Public project pages
+* Project status tracking
+
+---
+
+## Tech Stack
+
+Coming soon.
+
+---
+
+## Project Status
+
+🚧 Assemble is currently under active development.
+
+The first release focuses on creating the best experience for finding teammates and launching projects.
+
+---
+
+## Contributing
+
+We'd love your help.
+
+Whether you're a developer, designer, writer, or someone with product ideas, every contribution matters.
+
+1. Fork the repository.
+2. Create a new branch.
+3. Make your changes.
+4. Open a Pull Request.
+
+If you're unsure where to start, check the open issues.
+
+---
+
+## Roadmap
+
+* [ ] Authentication
+* [ ] User profiles
+* [ ] Project pitching
+* [ ] Admin review system
+* [ ] Project discovery
+* [ ] Applications
+* [ ] Project dashboard
+* [ ] GitHub automation
+* [ ] Discord automation
+* [ ] Cal.com integration
+* [ ] Public project pages
+* [ ] First public release
+
+---
+
+## The dream
+
+Imagine opening Assemble and seeing hundreds of ambitious projects waiting for teammates.
+
+Someone needs an AI engineer.
+
+Someone is looking for a designer.
+
+Someone wants to build the next open source library.
+
+Someone is waiting for you.
+
+Maybe your next project starts here.
+
+---
+
+## License
+
+MIT License
