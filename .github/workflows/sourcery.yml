@@ -20,5 +20,3 @@ jobs:
 
       - name: Run Sourcery Review
         uses: sourcery-ai/action@v1
-        with:
-          token: ${{ secrets.SOURCERY_TOKEN }}
