@@ -1,142 +1,1133 @@
+/* ============================================================
+   page.module.css — Assemble Homepage
+   masterPortfolio UI DNA · Flat Solid Violet Theme
+   ============================================================ */
+
 .page {
-  --background: #fafafa;
-  --foreground: #fff;
-
-  --text-primary: #000;
-  --text-secondary: #666;
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-  --button-secondary-border: #ebebeb;
-
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-geist-sans);
-  background-color: var(--background);
+  min-height: 100vh;
+  background-color: var(--body);
+  color: var(--text);
+  overflow-x: hidden;
 }
 
-.main {
+/* ─── NAVBAR ─── */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
   display: flex;
-  flex: 1;
-  width: 100%;
-  max-width: 800px;
-  flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  background-color: var(--foreground);
-  padding: 120px 60px;
+  padding: 18px 5vw;
+  transition: background var(--trans-med), border-color var(--trans-med), backdrop-filter var(--trans-med);
 }
 
-.intro {
+.headerScrolled {
+  background: rgba(13, 11, 30, 0.9);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+}
+
+.logo {
+  font-size: 1.4em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.logoName {
+  font-family: "Agustina Regular", serif;
+  font-weight: bold;
+  padding: 0 4px;
+  color: var(--text);
+}
+
+.logoBracket {
+  color: var(--accent);
+}
+
+/* Desktop nav */
+.desktopNav {
+  display: none;
+  align-items: center;
+  gap: 28px;
+  font-family: "Google Sans Regular", "Montserrat", sans-serif;
+}
+
+.navLink {
+  font-size: 15px;
+  color: var(--secondary-text);
+  text-decoration: none;
+  transition: color var(--trans-fast);
+  position: relative;
+}
+
+.navLink::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transition: transform var(--trans-fast);
+}
+
+.navLink:hover {
+  color: var(--text);
+}
+
+.navLink:hover::after {
+  transform: scaleX(1);
+}
+
+.navCta {
+  font-size: 15px;
+  color: var(--secondary-text);
+  text-decoration: none;
+  padding: 8px 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  transition: color var(--trans-fast), border-color var(--trans-fast);
+}
+
+.navCta:hover {
+  color: var(--text);
+  border-color: var(--accent);
+}
+
+.navCtaPrimary {
+  font-family: "Google Sans Medium", "Montserrat", sans-serif;
+  font-size: 15px;
+  color: #fff;
+  background: var(--accent);
+  padding: 9px 22px;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: background var(--trans-fast), transform var(--trans-fast);
+}
+
+.navCtaPrimary:hover {
+  background: var(--jacket-color);
+  transform: translateY(-1px);
+}
+
+/* Mobile hamburger */
+.menuIcon {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  gap: 24px;
+  gap: 5px;
+  cursor: pointer;
+  padding: 6px;
+  background: none;
+  border: none;
 }
 
-.intro h1 {
-  max-width: 320px;
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 48px;
-  letter-spacing: -2.4px;
-  text-wrap: balance;
-  color: var(--text-primary);
+.navicon {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  position: relative;
+  transition: background var(--trans-fast);
 }
 
-.intro p {
-  max-width: 440px;
-  font-size: 18px;
-  line-height: 32px;
-  text-wrap: balance;
-  color: var(--text-secondary);
-}
-
-.intro a {
-  font-weight: 500;
-  color: var(--text-primary);
-}
-
-.ctas {
-  display: flex;
-  flex-direction: row;
+.navicon::before,
+.navicon::after {
+  content: "";
+  position: absolute;
   width: 100%;
-  max-width: 440px;
-  gap: 16px;
-  font-size: 14px;
+  height: 100%;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform var(--trans-fast), top var(--trans-fast);
 }
 
-.ctas a {
+.navicon::before { top: -7px; }
+.navicon::after  { top:  7px; }
+
+.naviconOpen { background: transparent; }
+.naviconOpen::before { top: 0; transform: rotate(45deg); }
+.naviconOpen::after  { top: 0; transform: rotate(-45deg); }
+
+.mobileMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(13, 11, 30, 0.98);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(16px);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 5vw 24px;
+}
+
+.mobileNavLink {
+  font-family: "Google Sans Regular", "Montserrat", sans-serif;
+  font-size: 16px;
+  color: var(--secondary-text);
+  text-decoration: none;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  transition: color var(--trans-fast);
+}
+
+.mobileNavLink:hover {
+  color: var(--text);
+}
+
+@media (min-width: 768px) {
+  .desktopNav { display: flex; }
+  .menuIcon   { display: none; }
+}
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  padding: 120px 5vw 80px;
+  width: 90%;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.heroContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.greetingNickname {
+  font-family: "Google Sans Bold Italic", "Montserrat", sans-serif;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: var(--accent-light);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.greetingHeading {
+  font-family: "Google Sans Bold", "Montserrat", sans-serif;
+  font-size: 68px;
+  line-height: 1.08;
+  color: var(--text);
+  margin-bottom: 28px;
+}
+
+.greetingAccent {
+  color: var(--accent);
+}
+
+.greetingBody {
+  font-family: "Google Sans Medium", "Montserrat", sans-serif;
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--secondary-text);
+  max-width: 480px;
+  margin-bottom: 40px;
+}
+
+.buttonGreetingDiv {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ── Shared Buttons ── */
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 28px;
+  font-family: "Google Sans Bold", "Montserrat", sans-serif;
+  font-size: 15px;
+  color: #fff;
+  background: var(--accent);
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: background var(--trans-fast), transform var(--trans-fast);
+}
+
+.btnPrimary:hover {
+  background: var(--jacket-color);
+  transform: translateY(-2px);
+}
+
+.btnSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 26px;
+  font-family: "Google Sans Bold", "Montserrat", sans-serif;
+  font-size: 15px;
+  color: var(--accent-light);
+  background: transparent;
+  border: 1.5px solid var(--accent);
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: background var(--trans-fast), color var(--trans-fast), transform var(--trans-fast);
+}
+
+.btnSecondary:hover {
+  background: var(--highlight);
+  color: var(--text);
+  transform: translateY(-2px);
+}
+
+.btnSecondaryLight {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 26px;
+  font-family: "Google Sans Bold", "Montserrat", sans-serif;
+  font-size: 15px;
+  color: #fff;
+  background: transparent;
+  border: 1.5px solid rgba(255,255,255,0.35);
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: background var(--trans-fast), transform var(--trans-fast);
+}
+
+.btnSecondaryLight:hover {
+  background: rgba(255,255,255,0.1);
+  transform: translateY(-2px);
+}
+
+/* ── Hero Visual ── */
+.heroVisual {
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 128px;
-  border: 1px solid transparent;
-  transition: 0.2s;
-  cursor: pointer;
-  width: fit-content;
-  font-weight: 500;
 }
 
-a.primary {
-  background: var(--text-primary);
-  color: var(--background);
+.heroMockupWrap {
+  width: 100%;
+  max-width: 440px;
+}
+
+/* ── Shared mockup chrome ── */
+.mockupCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.mockupDots {
+  display: flex;
+  gap: 5px;
+}
+
+.mockupDots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border);
+}
+
+.mockupDots span:nth-child(1) { background: #FF5F56; }
+.mockupDots span:nth-child(2) { background: #FFBD2E; }
+.mockupDots span:nth-child(3) { background: #27C93F; }
+
+.mockupCardTitle {
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  color: var(--secondary-text);
+}
+
+/* Hero mockup */
+.heroMockupCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.mockupProjectItem {
+  padding: 16px 18px;
+}
+
+.mockupProjectMeta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.mockupBadge {
+  font-family: "Google Sans Medium", "Montserrat", sans-serif;
+  font-size: 11px;
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+}
+
+.mockupProjectName {
+  font-family: "Google Sans Bold", "Montserrat", sans-serif;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.mockupTagRow {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.mockupTag {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  color: var(--secondary-text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  padding: 3px 10px;
+}
+
+.mockupRoles {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mockupRole {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Google Sans Regular", "Montserrat", sans-serif;
+  font-size: 13px;
+  color: var(--secondary-text);
+}
+
+.roleDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.mockupDivider {
+  height: 1px;
+  background: var(--border);
+  margin: 0 18px;
+}
+
+/* ─── FEATURE SHOWCASES ─── */
+.showcaseSection {
+  padding: 40px 0;
+}
+
+.showcaseRow {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+  width: 90%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 80px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.showcaseRow:last-child {
+  border-bottom: none;
+}
+
+.showcaseReverse {
+  flex-direction: row-reverse;
+}
+
+.showcaseVisual {
+  flex: 1;
+  min-width: 0;
+}
+
+.showcaseContent {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Shared showcase mockup container */
+.showcaseMockup {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.showcaseHeading {
+  font-family: "Google Sans Bold", "Montserrat", sans-serif;
+  font-size: 36px;
+  line-height: 1.2;
+  color: var(--text);
+  margin: 12px 0 18px;
+}
+
+.showcaseBody {
+  font-family: "Google Sans Regular", "Montserrat", sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--secondary-text);
+  margin-bottom: 28px;
+}
+
+.showcaseLink {
+  display: inline-flex;
+  align-items: center;
+  font-family: "Google Sans Bold", "Montserrat", sans-serif;
+  font-size: 15px;
+  color: var(--accent-light);
+  text-decoration: none;
+  transition: color var(--trans-fast), gap var(--trans-fast);
+  gap: 4px;
+}
+
+.showcaseLink:hover {
+  color: var(--text);
   gap: 8px;
 }
 
-a.secondary {
-  border-color: var(--button-secondary-border);
+/* Pitch mockup */
+.pitchForm {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
-  }
-
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
-  }
+.pitchField {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
-@media (max-width: 600px) {
-  .main {
-    padding: 48px 24px;
-  }
-
-  .intro {
-    gap: 16px;
-  }
-
-  .intro h1 {
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -1.92px;
-  }
+.pitchLabel {
+  font-family: "Google Sans Medium", "Montserrat", sans-serif;
+  font-size: 11px;
+  color: var(--secondary-text);
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
-  }
+.pitchInput {
+  font-family: "Google Sans Regular", "Montserrat", sans-serif;
+  font-size: 14px;
+  color: var(--text);
+  background: var(--surface-tint);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 9px 12px;
+}
 
-  .page {
-    --background: #000;
-    --foreground: #000;
+.pitchInputRow {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
 
-    --text-primary: #ededed;
-    --text-secondary: #999;
+.pitchRoleRow {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
 
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-    --button-secondary-border: #1a1a1a;
-  }
+.pitchRoleChip {
+  font-family: "Google Sans Medium", "Montserrat", sans-serif;
+  font-size: 12px;
+  color: var(--accent-light);
+  background: var(--highlight);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-full);
+  padding: 4px 12px;
+}
+
+.pitchAddRole {
+  font-family: "Google Sans Regular", "Montserrat", sans-serif;
+  font-size: 12px;
+  color: var(--secondary-text);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-full);
+  padding: 4px 12px;
+}
+
+.pitchSubmit {
+  font-family: "Google Sans Bold", "Montserrat", sans-serif;
+  font-size: 14px;
+  color: #fff;
+  background: var(--accent);
+  border-radius: var(--radius-full);
+  padding: 10px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: background var(--trans-fast);
+}
+
+.pitchSubmit:hover {
+  background: var(--jacket-color);
+}
+
+/* Review mockup */
+.applicantList {
+  padding: 12px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.applicantRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  transition: background var(--trans-fast);
+}
+
+.applicantRow:hover {
+  background: var(--surface-tint);
+}
+
+.applicantAvatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--highlight);
+  border: 1.5px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Google Sans Bold", "Montserrat", sans-serif;
+  font-size: 13px;
+  color: var(--accent-light);
+  flex-shrink: 0;
+}
+
+.applicantInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.applicantName {
+  font-family: "Google Sans Bold", "Montserrat", sans-serif;
+  font-size: 13px;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+
+.applicantRole {
+  font-family: "Google Sans Regular", "Montserrat", sans-serif;
+  font-size: 12px;
+  color: var(--secondary-text);
+}
+
+.applicantRight {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.scoreBar {
+  width: 64px;
+  height: 4px;
+  background: var(--surface-tint);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.scoreFill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: var(--radius-full);
+}
+
+.scoreNum {
+  font-family: "Google Sans Bold", "Montserrat", sans-serif;
+  font-size: 12px;
+  color: var(--accent-light);
+  width: 24px;
+  text-align: right;
+}
+
+.applicantStatus {
+  font-family: "Google Sans Medium", "Montserrat", sans-serif;
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+}
+
+.statusShortlisted {
+  color: #10B981;
+  background: rgba(16, 185, 129, 0.12);
+}
+
+.statusNew {
+  color: var(--secondary-text);
+  background: var(--surface-tint);
+}
+
+/* Workspace mockup */
+.workspaceItems {
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.workspaceItem {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  background: var(--surface-tint);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.workspaceIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: var(--highlight);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.workspaceInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.workspaceName {
+  font-family: "Google Sans Bold", "Montserrat", sans-serif;
+  font-size: 13px;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+
+.workspaceDetail {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  color: var(--secondary-text);
+  font-style: italic;
+}
+
+.workspaceCheck {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.workspaceReadyBadge {
+  font-family: "Google Sans Bold", "Montserrat", sans-serif;
+  font-size: 13px;
+  color: #10B981;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: var(--radius-full);
+  padding: 8px 16px;
+  text-align: center;
+}
+
+/* ─── SHARED SECTION TOKENS ─── */
+.sectionInner {
+  width: 90%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 96px 0;
+}
+
+.sectionHeader {
+  margin-bottom: 56px;
+  text-align: center;
+}
+
+.sectionLabel {
+  font-family: "Google Sans Bold", "Montserrat", sans-serif;
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+
+.sectionHeading {
+  font-family: "Google Sans Bold", "Montserrat", sans-serif;
+  font-size: 40px;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+/* ─── HOW IT WORKS ─── */
+.howSection {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.stepsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.stepCard {
+  padding: 32px 28px;
+  background: var(--body);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+  transition: border-color var(--trans-fast), transform var(--trans-fast), box-shadow var(--trans-fast);
+}
+
+.stepCard::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--trans-med);
+}
+
+.stepCard:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.stepCard:hover::before {
+  transform: scaleX(1);
+}
+
+.stepNum {
+  font-family: "Agustina Regular", serif;
+  font-size: 40px;
+  color: var(--highlight);
+  display: block;
+  margin-bottom: 16px;
+  line-height: 1;
+}
+
+.stepTitle {
+  font-family: "Google Sans Bold", "Montserrat", sans-serif;
+  font-size: 17px;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.stepBody {
+  font-family: "Google Sans Regular", "Montserrat", sans-serif;
+  font-size: 14px;
+  color: var(--secondary-text);
+  line-height: 1.7;
+}
+
+/* ─── TESTIMONIALS ─── */
+.testimonialSection {
+  padding: 96px 0 80px;
+  overflow: hidden;
+}
+
+.testimonialSection .sectionInner {
+  padding-bottom: 40px;
+}
+
+/* Marquee */
+.marqueeOuter {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+.marqueeTrack {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: marqueeLeft 40s linear infinite;
+}
+
+.marqueeReverse {
+  animation: marqueeRight 40s linear infinite;
+}
+
+@keyframes marqueeLeft {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marqueeRight {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.marqueeTrack:hover {
+  animation-play-state: paused;
+}
+
+/* Testimonial card */
+.testimonialCard {
+  width: 340px;
+  flex-shrink: 0;
+  padding: 28px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: border-color var(--trans-fast);
+}
+
+.testimonialCard:hover {
+  border-color: var(--accent);
+}
+
+.testimonialQuote {
+  font-family: "Google Sans Regular", "Montserrat", sans-serif;
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--text);
+  flex: 1;
+}
+
+.testimonialAuthor {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.testimonialAvatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--highlight);
+  border: 1.5px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Google Sans Bold", "Montserrat", sans-serif;
+  font-size: 13px;
+  color: var(--accent-light);
+  flex-shrink: 0;
+}
+
+.testimonialName {
+  font-family: "Google Sans Bold", "Montserrat", sans-serif;
+  font-size: 13px;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+
+.testimonialRole {
+  font-family: "Google Sans Regular", "Montserrat", sans-serif;
+  font-size: 12px;
+  color: var(--secondary-text);
+}
+
+/* ─── FAQ ─── */
+.faqSection {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.faqItem {
+  border-bottom: 1px solid var(--border);
+}
+
+.faqItem:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.faqItemOpen .faqQuestion {
+  color: var(--text);
+}
+
+.faqQuestion {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: "Google Sans Bold", "Montserrat", sans-serif;
+  font-size: 16px;
+  color: var(--secondary-text);
+  text-align: left;
+  transition: color var(--trans-fast);
+}
+
+.faqQuestion:hover {
+  color: var(--text);
+}
+
+.faqChevron {
+  flex-shrink: 0;
+  color: var(--accent);
+  display: flex;
+}
+
+.faqAnswer {
+  overflow: hidden;
+}
+
+.faqAnswer p {
+  font-family: "Google Sans Regular", "Montserrat", sans-serif;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--secondary-text);
+  padding-bottom: 22px;
+}
+
+/* ─── CTA BANNER ─── */
+.ctaSection {
+  background: var(--splash-bg);
+  border-top: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.ctaSection::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(124, 58, 237, 0.2) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.ctaInner {
+  width: 90%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 100px 0;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.ctaHeading {
+  font-family: "Google Sans Bold", "Montserrat", sans-serif;
+  font-size: 42px;
+  line-height: 1.2;
+  color: var(--text);
+  margin-bottom: 18px;
+}
+
+.ctaBody {
+  font-family: "Google Sans Medium", "Montserrat", sans-serif;
+  font-size: 17px;
+  color: var(--secondary-text);
+  margin-bottom: 40px;
+  line-height: 1.65;
+}
+
+.ctaButtons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ─── FOOTER ─── */
+.footer {
+  background: var(--dark);
+  border-top: 1px solid var(--border);
+}
+
+.footerInner {
+  width: 90%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 48px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.footerLogo {
+  font-size: 1.3em;
+  text-decoration: none;
+}
+
+.footerTagline {
+  font-family: "Google Sans Regular", "Montserrat", sans-serif;
+  font-size: 14px;
+  color: var(--secondary-text);
+}
+
+.footerLinks {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footerLinks a {
+  font-family: "Google Sans Regular", "Montserrat", sans-serif;
+  font-size: 14px;
+  color: var(--secondary-text);
+  text-decoration: none;
+  transition: color var(--trans-fast);
+}
+
+.footerLinks a:hover {
+  color: var(--accent-light);
+}
+
+.footerCopy {
+  font-size: 12px;
+  color: var(--secondary-text);
+  opacity: 0.5;
+  font-family: "Montserrat", sans-serif;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1100px) {
+  .hero { flex-direction: column; min-height: auto; padding-top: 100px; }
+  .heroContent { order: 1; }
+  .heroVisual { order: 2; width: 100%; }
+  .showcaseRow { flex-direction: column !important; gap: 40px; padding: 60px 0; }
+}
+
+@media (max-width: 768px) {
+  .greetingHeading { font-size: 42px; }
+  .showcaseHeading { font-size: 28px; }
+  .sectionHeading  { font-size: 28px; }
+  .ctaHeading      { font-size: 28px; }
+  .sectionInner    { padding: 64px 0; }
 }
