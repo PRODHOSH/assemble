@@ -1,40 +1,159 @@
+/* ============================================================
+   Assemble — Global Styles
+   Dark Violet Theme · masterPortfolio UI DNA
+   Fonts: Agustina · Google Sans · Montserrat
+   ============================================================ */
+
+/* ---------- @font-face — local copies from masterPortfolio ---------- */
+@font-face {
+  font-family: "Agustina Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Agustina Regular"), url("/fonts/Agustina.woff") format("woff");
+}
+@font-face {
+  font-family: "Montserrat";
+  src: local("Montserrat"), url("/fonts/Montserrat-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Google Sans Bold";
+  src: local("Google Sans Bold"), url("/fonts/GoogleSans-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Google Sans Bold Italic";
+  src: local("Google Sans Bold Italic"), url("/fonts/GoogleSans-BoldItalic.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Google Sans Italic";
+  src: local("Google Sans Italic"), url("/fonts/GoogleSans-Italic.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Google Sans Medium";
+  src: local("Google Sans Medium"), url("/fonts/GoogleSans-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Google Sans Medium Italic";
+  src: local("Google Sans Medium Italic"), url("/fonts/GoogleSans-MediumItalic.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Google Sans Regular";
+  src: local("Google Sans Regular"), url("/fonts/GoogleSans-Regular.ttf") format("truetype");
+}
+
+/* ---------- CSS Custom Properties — Theming ---------- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Light Theme (Default) */
+  --body:            #FFFFFF;
+  --text:            #0F172A;
+  --exp-txt:         #1E293B;
+  --highlight:       #F1F5F9;
+  --dark:            #F8FAFC;
+  --secondary-text:  #64748B;
+  --image-highlight: #7C3AED;
+  --comp-highlight:  #F8FAFC;
+  --jacket-color:    #6D28D9;
+  --header-color:    #7C3AED1A;
+  --splash-bg:       #F8FAFC;
+
+  --accent:          #7C3AED;
+  --accent-light:    #8B5CF6;
+  --accent-dim:      #EDE9FE;
+  --surface:         #FFFFFF;
+  --surface-tint:    #F8FAFC;
+  --border:          #E2E8F0;
+
+  /* Typography — identical to masterPortfolio */
+  --font-display:    "Agustina Regular", serif;
+  --font-heading:    "Google Sans Bold", "Montserrat", sans-serif;
+  --font-heading-it: "Google Sans Bold Italic", "Montserrat", sans-serif;
+  --font-medium:     "Google Sans Medium", "Montserrat", sans-serif;
+  --font-body:       "Montserrat", "Google Sans Regular", sans-serif;
+
+  /* Spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+
+  /* Radii */
+  --radius-sm:   8px;
+  --radius-md:   16px;
+  --radius-lg:   24px;
+  --radius-xl:   40px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm:  0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md:  0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg:  0 10px 15px -3px rgba(0, 0, 0, 0.1);
+
+  /* Transitions */
+  --ease-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+  --trans-fast: 200ms var(--ease-cubic);
+  --trans-med:  300ms var(--ease-cubic);
+  --trans-slow: 500ms var(--ease-cubic);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+[data-theme="dark"] {
+  /* Dark Theme */
+  --body:            #0D0B1E;
+  --text:            #F4F0FF;
+  --exp-txt:         #EDE8FF;
+  --highlight:       #2D1F5E;
+  --dark:            #000000;
+  --secondary-text:  #9D91C4;
+  --image-highlight: #7C3AED;
+  --comp-highlight:  #221E38;
+  --jacket-color:    #6D28D9;
+  --header-color:    #7C3AED26;
+  --splash-bg:       #0D0B1E;
+
+  --accent:          #7C3AED;
+  --accent-light:    #A78BFA;
+  --accent-dim:      #2D1F5E;
+  --surface:         #18162A;
+  --surface-tint:    #221E38;
+  --border:          #2E2A45;
+
+  --shadow-sm:  0 2px 8px  rgba(0, 0, 0, 0.4);
+  --shadow-md:  0 6px 24px rgba(0, 0, 0, 0.5);
+  --shadow-lg:  0 16px 48px rgba(0, 0, 0, 0.6);
 }
 
+/* ---------- Reset ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- Base ---------- */
 html {
+  scroll-behavior: smooth;
   height: 100%;
+  font-size: 16px;
 }
 
-html,
-body {
-  max-width: 100vw;
+html, body {
   overflow-x: hidden;
 }
 
 body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--body);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 19px;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+  transition: background var(--trans-slow), color var(--trans-slow);
+  scrollbar-width: thin;
+  scrollbar-color: var(--highlight) transparent;
 }
 
 a {
@@ -42,8 +161,71 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+/* ---------- Keyframe Animations (masterPortfolio style) ---------- */
+@keyframes fade_down {
+  0% {
+    opacity: 0.01;
+    transform: translateY(-20px);
+    transition: opacity 300ms var(--ease-cubic), transform 300ms var(--ease-cubic);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+    transition: opacity 300ms var(--ease-cubic), transform 300ms var(--ease-cubic);
   }
 }
+
+@keyframes fade_up {
+  0% {
+    opacity: 0.01;
+    transform: translateY(20px);
+    transition: opacity 300ms var(--ease-cubic), transform 300ms var(--ease-cubic);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+    transition: opacity 300ms var(--ease-cubic), transform 300ms var(--ease-cubic);
+  }
+}
+
+@keyframes fade_in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+
+@keyframes pulse_glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(155, 93, 229, 0.3); }
+  50%       { box-shadow: 0 0 40px rgba(155, 93, 229, 0.6); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ---------- Media Query Scale ---------- */
+@media (max-width: 1380px) {
+  html { font-size: 15px; }
+}
+
+@media (max-width: 768px) {
+  html { font-size: 14px; }
+}
+
